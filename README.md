@@ -44,22 +44,54 @@ Nedo Authentication is a laravel library written in pure PHP and providing a set
         use Illuminate\Routing\Controller as BaseController;
 
         use Illuminate\Support\Facades\Auth;
+        use Nedoquery\Api\NedoRequest;
 
         class Controller extends BaseController
         {
             use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+            /**
+             * Authenticate User
+             * 
+             * @var \Illuminate\Auth\GenericUser 
+             */
             protected $user;
 
-            public function __construct()
+            /**
+             *
+             * Request class to send data to Nedo server
+             * 
+             * @var \Nedoquery\Api\NedoRequest 
+             */
+            protected $nedoRequest;
+
+            public function __construct(NedoRequest $nedoRequest)
             {
+                $this->nedoRequest = $nedoRequest;
+
                 $this->middleware(function ($request, $next) {
+
                     $this->user = Auth::user();
+                    
+                    $this->nedoRequest->setUser($this->user);
+
                     view()->share('user', $this->user);
                     return $next($request);
                 });
             }
         }
+      ```
+
+  5. Example usage of nedo-query with nedo-auth module :
+        * Example:
+    
+      ```php
+         
+        $result = $this->nedoRequest->select('user_username, user_name, user_email')
+                ->from('usermanagement')
+                ->filter('user_id', 'gt', '1')
+                ->order('user_name', 'ASC')
+                ->get();
       ```
 
   6. You can protect your page using laravel routers.
