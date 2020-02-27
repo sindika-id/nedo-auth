@@ -1,0 +1,27 @@
+{
+    "name": "sindika-id/nedo-auth",
+    "description": "Nedo Authentication Bridge",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Willy Achmat Fauzi",
+            "email": "willy.achmat@gmail.com"
+        }
+    ],
+    "require": {
+        "laravelcollective/html": "^6.0",
+        "sindika-id/nedo-query": "dev-master"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nedoquery\\Auth\\NedoAuthServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
