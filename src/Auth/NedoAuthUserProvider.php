@@ -87,7 +87,7 @@ class NedoAuthUserProvider implements UserProvider {
     public function retrieveById($identifier) {
         $objIndentifier = json_decode($identifier);
         
-        $result = $this->nedoRequest->request('usermanagement/info.json', [], 
+        $result = $this->nedoRequest->request('user/info.json', [], 
                 [
                     'Triton-token' => $objIndentifier->user_token,
                     'Triton-role' => $objIndentifier->user_role->role_id
