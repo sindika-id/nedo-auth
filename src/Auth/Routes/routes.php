@@ -10,4 +10,7 @@ Route::group(['namespace' => '\Nedoquery\Auth\Controllers', 'middleware' => ['no
     
     Route::get('auth/forgotpass', 'ForgotPasswordController@getForgotPass')->name('forgotpass');
     Route::post('auth/forgotpass', 'ForgotPasswordController@postForgotPass');
+    
+    Route::get('auth/recover/{token}', 'ForgotPasswordController@getRecoverPass')->name('recover');
+    Route::get('auth/recover', 'ForgotPasswordController@postRecoverPass');
 });
