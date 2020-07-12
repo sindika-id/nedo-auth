@@ -19,13 +19,7 @@
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="form-group">
                     <label>Password</label>
-                        <input type="password" name="password" class="form-control @error('password') border-danger @enderror" placeholder="Password" required="required" value="{{ old('password') }}">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                        <input type="password" name="password" class="form-control @error('password') border-danger @enderror" placeholder="Password" required="required" value="{{ old('password') }}">
-                    </div>
+                    <input type="password" name="password" class="form-control @error('password') border-danger @enderror" placeholder="Password" required="required" value="{{ old('password') }}">
                 </div>
                 <div class="form-group">
                     <label>Konfirmasi Password</label>

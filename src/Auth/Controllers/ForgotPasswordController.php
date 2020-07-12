@@ -30,18 +30,36 @@ class ForgotPasswordController extends Controller
         return view("nedo::forgotpassword");
     }
     
-    public function getNewPass($token){
+    public function getRecoverPass($token){
         return view("nedo::newpassword", compact('token'));
     }
     
-    public function postNewPass(Request $request){
+    public function postRecoverPass(Request $request){
+        
+        $params = $request->only(['token', 'password']);
+        
         $validator = Validator::make($request->all(), [
-            'secret' => 'required',
+            'token' => 'required',
             'password' => 'required|confirmed',
         ]);
 
         if ($validator->fails()) {
             return Redirect::back()->withInput()->withErrors($validator);
+        }
+        
+        $result = $this->nedoRequest->request('auth/resetpassword.json', [
+            'password1' => $params['password'],
+            'password2' => $params['password'],
+            'token' => $params['token']
+        ], [], TRUE);
+        
+        if ($result->success){
+            return view("nedo::newpassword-finish");
+        }
+        else{
+             return Redirect::back()->withInput()->withErrors($validator)->withErrors(
+                $result->message
+            );
         }
     }
 
