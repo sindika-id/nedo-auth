@@ -60,9 +60,11 @@ class NedoAuthUserProvider implements UserProvider {
             $user->user_token = $result->token;
             $user->user_id = $result->user->user_id;
             $user->user_name = $result->user->user_name;
+            $user->user_email = $result->user->user_email;
             $user->user_type = $result->user->user_type;
             $user->user_username = $result->user->user_username;
             $user->user_role = $result->user->user_role;
+            $user->user_organization = $result->user->user_organization;
             $user->id = json_encode($user);
             $user->remember_token = false;
         }
@@ -98,9 +100,11 @@ class NedoAuthUserProvider implements UserProvider {
         $user->user_token = $objIndentifier->user_token;
         $user->user_id = $result->user_id;
         $user->user_name = $result->user_name;
+        $user->user_email = $result->user_email;
         $user->user_type = $result->user_type;
         $user->user_username = $result->user_username;
         $user->user_role = $result->user_role;
+        $user->user_organization = $result->user_organization;
         $user->remember_token = false;
         
         $genericUser = $this->getGenericUser($user);
