@@ -96,6 +96,10 @@ class NedoAuthUserProvider implements UserProvider {
                 ], 
         false);
         
+        if ($result == null){
+            return null;
+        }
+        
         $user = new \stdClass();
         $user->user_token = $objIndentifier->user_token;
         $user->user_id = $result->user_id;
