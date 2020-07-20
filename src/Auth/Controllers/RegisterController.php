@@ -48,7 +48,7 @@ class RegisterController extends Controller
         $user_type = $config['user_type'];
         
         $result = $this->nedoRequest->request('auth/register.json', [
-            'usename' => $credentials['username'],
+            'username' => $credentials['username'],
             'email' => $credentials['email'],
             'target_url' => url('/'),
             'usertype' => $user_type
