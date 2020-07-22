@@ -128,7 +128,7 @@ class NedoAuthUserProvider implements UserProvider {
     public function validateCredentials(Authenticatable $user, array $credentials) {
         
         $plain = $credentials['username'];
-        if ($plain === $user->user_username){
+        if ($plain === $user->user_username || $plain === $user->user_email){
             return TRUE;
         }
         return FALSE;
