@@ -11,7 +11,7 @@
     ],
     "require": {
         "laravelcollective/html": "^6.0",
-        "sindika-id/nedo-query": "dev-master"
+        "sindika-id/nedo-query": "^1.0"
     },
     "extra": {
         "laravel": {
